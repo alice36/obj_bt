@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+          integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+<div style="width: 600px; margin: auto; border: 1px #ccc solid; padding: 30px">
+    <h2>Dodaj wspólnotę</h2>
+    <form action="/addcommunity" method="post" th:object="${newCommunity}">
+
+        <div class="form-group">
+            <label for="name">Nazwa</label>
+            <input th:field="*{name}" type="text" class="form-control" id="name">
+        </div>
+
+        <div class="form-group">
+            <label for="adres">Adres</label>
+            <input th:field="*{address}" type="text" class="form-control" id="adres">
+        </div>
+
+        <input type="submit" value="Dodaj do bazy" class="btn btn-primary"/>
+
+    </form>
+    <br>
+    <h6> Oto lista naszych wspólnot:</h6>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa wspolnoty</th>
+            <th>Adres</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="community: ${communities}">
+            <td th:text="${community.id}"></td>
+            <td th:text="${community.name}"></td>
+            <td th:text="${community.address}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

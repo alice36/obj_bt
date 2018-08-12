@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+          integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+<div style="width: 600px; margin: auto; border: 1px #ccc solid; padding: 30px">
+    <h2>Edytuj mieszkanca</h2>
+    <form action="/modifyresident" method="post" th:object="${modifyResident}">
+
+        <div class="form-group">
+            <label for="firstName">Imie</label>
+            <input th:field="*{firstName}" type="text" class="form-control" id="firstName">
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Nazwisko</label>
+            <input th:field="*{lastName}" type="text" class="form-control" id="lastName">
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Płeć</label>
+            <input th:field="*{gender}" type="text" class="form-control" id="gender">
+        </div>
+        <label for="id"></label><input type="hidden" th:value="${modifyResident.id}" class="form-control" id="id" name="id"/>
+        <label for="flat"></label><input type="hidden" th:value="${modifyResident.flat}" class="form-control" id="flat" name="flat"/>
+        <input type="submit" value="Aktualizuj" class="btn btn-primary"/>
+    </form>
+</div>
+</body>
+</html>
