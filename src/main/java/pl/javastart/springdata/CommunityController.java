@@ -49,6 +49,9 @@ public class CommunityController {
     @PostMapping("/addcommunity")
     public String addFlat(Community community) {
 
+        if (community.getName().equals("")){
+            community.setName(community.getAddress());
+        }
         communityRepository.save(community);
 
         return "redirect:/commadd";
@@ -102,7 +105,20 @@ public class CommunityController {
            return "editFlat";
        } else if (with.equals("mieszkanie") && what.equals("usuń")){
            Flat flat = flatRepository.findFlatUsingId(id);
-           flatRepository.delete(flat);
+           boolean check = false;
+           List<Resident> residents = residentRepository.findAll();
+
+           for (Resident resident : residents) {
+               if (resident.getFlat().getId().equals(flat.getId())){
+                   check=true;
+               }
+           }
+           if (!check){
+               flatRepository.delete(flat);
+           } else {
+               System.out.println("Nie mozna usunac mieszkania!");
+           }
+
            return "redirect:/";
        } else if (with.equals("mieszkaniec") && what.equals("edytuj")) {
            Resident resident = residentRepository.findResidentUsingId(id);

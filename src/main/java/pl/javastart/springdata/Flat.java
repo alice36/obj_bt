@@ -12,7 +12,7 @@ public class Flat {
     private Long number;
     private double area;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "flat", fetch = FetchType.EAGER)
     private List<Resident> residents;
 
     @ManyToOne()

@@ -10,7 +10,7 @@ public class Community {
     private String name;
     private String address;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "community", fetch = FetchType.EAGER)
     private List<Flat> flats;
 
     public Long getId() {
