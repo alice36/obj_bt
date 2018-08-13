@@ -97,8 +97,22 @@ public class CommunityController {
            return "editCommunity";
        } else if (with.equals("wspolnota") && what.equals("usuń")){
            Community community = communityRepository.findCommunityUsingId(id);
-           communityRepository.delete(community);
+           boolean check = false;
+           List<Flat> flats = flatRepository.findAll();
+
+           for (Flat flat : flats) {
+               if (flat.getCommunity().getId().equals(community.getId())){
+                   check=true;
+                   break;
+               }
+           }
+           if (!check){
+               communityRepository.delete(community);
+           } else {
+               System.out.println("Nie mozna usunac wspolnoty!");
+           }
            return "redirect:/";
+
        } else if (with.equals("mieszkanie") && what.equals("edytuj")) {
            Flat flat = flatRepository.findFlatUsingId(id);
            model.addAttribute("modifyFlat", flat);
@@ -111,6 +125,7 @@ public class CommunityController {
            for (Resident resident : residents) {
                if (resident.getFlat().getId().equals(flat.getId())){
                    check=true;
+                   break;
                }
            }
            if (!check){
