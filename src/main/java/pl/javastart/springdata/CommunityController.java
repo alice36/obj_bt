@@ -110,6 +110,7 @@ public class CommunityController {
                communityRepository.delete(community);
            } else {
                System.out.println("Nie mozna usunac wspolnoty!");
+               return "error";
            }
            return "redirect:/";
 
@@ -132,6 +133,7 @@ public class CommunityController {
                flatRepository.delete(flat);
            } else {
                System.out.println("Nie mozna usunac mieszkania!");
+               return "error";
            }
 
            return "redirect:/";
