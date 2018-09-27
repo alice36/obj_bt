@@ -15,16 +15,16 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>Firstname</th>
-            <th>Surname</th>
+            <th>Login</th>
+            <th>Person</th>
             <th>Numer</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="ticket: ${ticketed}">
             <td th:text="${ticket.id}"></td>
-            <td th:text="${ticket.firstname}"></td>
-            <td th:text="${ticket.surname}"></td>
+            <td th:text="${ticket.login}"></td>
+            <td th:text="${ticket.person}"></td>
             <td th:text="${ticket.numer}"></td>
         </tr>
         </tbody>
