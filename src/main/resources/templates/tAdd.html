@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+          integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+<div style="width: 700px; margin: auto; border: 1px #ccc solid; padding: 20px">
+    <h3>Business Travel ticket booking page</h3><br>
+
+    <h2>DGenerate ticket</h2>
+    <form action="/generated" method="post" th:object="${newTicket}">
+
+        <div class="form-group">
+            <label for="firstname">Firstname</label>
+            <input th:field="*{firstname}" type="text" class="form-control" id="firstname">
+        </div>
+
+        <div class="form-group">
+            <label for="surname">Surname</label>
+            <input th:field="*{surname}" type="text" class="form-control" id="surname">
+        </div>
+
+        <div class="form-group">
+            <label for="from">From</label>
+            <input th:field="*{from}" type="text" class="form-control" id="from">
+        </div>
+
+        <input type="submit" value="Dodaj do bazy" class="btn btn-primary"/>
+
+    </form>
+
+</div>
+</body>
+</html>

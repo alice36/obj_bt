@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+          integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+<div style="width: 700px; margin: auto; border: 1px #ccc solid; padding: 20px">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>FirstName</th>
+            <th>SurName</th>
+            <th>From</th>
+            <th>Ticket</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ticket: ${tickets}">
+            <td th:text="${ticket.id}"></td>
+            <td th:text="${ticket.firstname}"></td>
+            <td th:text="${ticket.surname}"></td>
+            <td th:text="${ticket.from}"></td>
+            <td th:text="${ticket.numer}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

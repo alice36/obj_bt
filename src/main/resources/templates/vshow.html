@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+          integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+<div style="width: 700px; margin: auto; border: 1px #ccc solid; padding: 20px">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Number</th>
+            <th>Free</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="voucher: ${vouchers}">
+            <td th:text="${voucher.id}"></td>
+            <td th:text="${voucher.numer}"></td>
+            <td th:text="${voucher.isAvailable}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

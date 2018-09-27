@@ -12,3 +12,7 @@ INSERT INTO resident(id, first_name, last_name, gender, flat_id) VALUES (3, 'Mar
 INSERT INTO resident(id, first_name, last_name, gender, flat_id) VALUES (4, 'Krystian', 'Winny', 'M', 3);
 INSERT INTO resident(id, first_name, last_name, gender, flat_id) VALUES (5, 'Pawel', 'Robak', 'M', 4);
 INSERT INTO resident(id, first_name, last_name, gender, flat_id) VALUES (6, 'Anna', 'Wrok', 'K', 3);
+
+INSERT INTO voucher(id, numer, is_available) VALUES (1, '22344', 0);
+INSERT INTO voucher(id, numer, is_available) VALUES (2, '12344', 1);
+INSERT INTO voucher(id, numer, is_available) VALUES (3, '02344', 1);
