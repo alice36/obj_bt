@@ -12,8 +12,8 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>FirstName</th>
-            <th>SurName</th>
+            <th>Login</th>
+            <th>Person</th>
             <th>From</th>
             <th>Ticket</th>
         </tr>
@@ -21,8 +21,8 @@
         <tbody>
         <tr th:each="ticket: ${tickets}">
             <td th:text="${ticket.id}"></td>
-            <td th:text="${ticket.firstname}"></td>
-            <td th:text="${ticket.surname}"></td>
+            <td th:text="${ticket.login}"></td>
+            <td th:text="${ticket.person}"></td>
             <td th:text="${ticket.from}"></td>
             <td th:text="${ticket.numer}"></td>
         </tr>
