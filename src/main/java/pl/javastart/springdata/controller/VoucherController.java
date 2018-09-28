@@ -10,6 +10,7 @@ import pl.javastart.springdata.model.Voucher;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -21,26 +22,22 @@ public class VoucherController {
         this.voucherRepository = voucherRepository;
     }
 
-    @GetMapping("/indexVoucher")
-    public String homeVucher(Model model) {
+    @GetMapping("/")
+    public String homeVoucher(Model model) {
         Ticket ticket = new Ticket();
         String username = System.getProperty("user.name");
         ticket.setLogin(username);
 
-        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        ticket.setTravelDate(dateFormat.format(new Date()));
+        ticket.setTravelDate(LocalDate.now());
         model.addAttribute("allClients", Client.values());
         model.addAttribute("newTicket", ticket);
-        return "indexVoucher";
-
+        return "index";
     }
 
     @GetMapping("/vshow")
     public String home(Model model) {
-
         List<Voucher> vouchers = voucherRepository.findAll();
         model.addAttribute("vouchers", vouchers);
         return "vshow";
-
     }
 }

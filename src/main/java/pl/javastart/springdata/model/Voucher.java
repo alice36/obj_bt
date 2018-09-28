@@ -1,9 +1,6 @@
 package pl.javastart.springdata.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Voucher {
@@ -14,6 +11,10 @@ public class Voucher {
 
     private String numer;
     private Integer isAvailable;
+
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @PrimaryKeyJoinColumn
+//    private Ticket ticket;
 
     public Long getId() {
         return id;

@@ -7,11 +7,10 @@
           integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 </head>
 <body>
+<th:block th:include="header.html :: header"/>
+
 <div style="width: 700px; margin: auto; border: 1px #ccc solid; padding: 20px">
     <h3>Business Travel ticket booking page</h3><br>
-
-    <a href="/vshow" >Show all vouchers</a><p>
-    <a href="/tshow" >Show all tickets</a>
     <p>
     <h5>Generate ticket</h5>
     <span><b></b></span>
@@ -30,12 +29,12 @@
         <div class="form-row">
             <div class="col">
                 <label for="from">From</label>
-                <input th:field="*{from}" type="text" class="form-control" id="from">
+                <input th:field="*{fromPlace}" type="text" class="form-control" id="from">
             </div>
 
             <div class="col">
                 <label for="to">To</label>
-                <input th:field="*{to}" type="text" class="form-control" id="to">
+                <input th:field="*{toPlace}" type="text" class="form-control" id="to">
             </div>
         </div>
 

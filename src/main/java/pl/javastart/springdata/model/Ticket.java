@@ -1,11 +1,9 @@
 package pl.javastart.springdata.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.LocalDateTime;
-import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Ticket {
@@ -13,12 +11,20 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String numer;
+//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "ticket", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    private Voucher voucher;
+
     private String person;
     private String login;
-    private String travelDate;
-    private String from;
-    private String to;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate travelDate;
+
+    private String fromPlace;
+    private String toPlace;
+
+    @Enumerated(EnumType.STRING)
     private Client clientName;
     private String commentaryTr;
 
@@ -30,8 +36,12 @@ public class Ticket {
         this.id = id;
     }
 
-    public String getNumer() {
-        return numer;
+    public Voucher getVoucher() {
+        return voucher;
+    }
+
+    public void setVoucher(Voucher voucher) {
+        this.voucher = voucher;
     }
 
     public String getPerson() {
@@ -42,10 +52,6 @@ public class Ticket {
         this.person = person;
     }
 
-    public void setNumer(String numer) {
-        this.numer = numer;
-    }
-
     public String getLogin() {
         return login;
     }
@@ -54,11 +60,11 @@ public class Ticket {
         this.login = login;
     }
 
-    public String getTravelDate() {
+    public LocalDate getTravelDate() {
         return travelDate;
     }
 
-    public void setTravelDate(String travelDate) {
+    public void setTravelDate(LocalDate travelDate) {
         this.travelDate = travelDate;
     }
 
@@ -70,20 +76,20 @@ public class Ticket {
         this.commentaryTr = commentaryTr;
     }
 
-    public String getFrom() {
-        return from;
+    public String getFromPlace() {
+        return fromPlace;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setFromPlace(String fromPlace) {
+        this.fromPlace = fromPlace;
     }
 
-    public String getTo() {
-        return to;
+    public String getToPlace() {
+        return toPlace;
     }
 
-    public void setTo(String to) {
-        this.to = to;
+    public void setToPlace(String toPlace) {
+        this.toPlace = toPlace;
     }
 
     public Client getClientName() {
