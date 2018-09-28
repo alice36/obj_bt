@@ -28,7 +28,7 @@ public class VoucherController {
         ticket.setLogin(username);
 
         DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        ticket.setDate(dateFormat.format(new Date()));
+        ticket.setTravelDate(dateFormat.format(new Date()));
         model.addAttribute("allClients", Client.values());
         model.addAttribute("newTicket", ticket);
         return "indexVoucher";

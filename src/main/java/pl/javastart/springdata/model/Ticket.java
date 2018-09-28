@@ -16,11 +16,11 @@ public class Ticket {
     private String numer;
     private String person;
     private String login;
-    private String date;
+    private String travelDate;
     private String from;
     private String to;
-    private String clientName;
-    private String commentary;
+    private Client clientName;
+    private String commentaryTr;
 
     public Long getId() {
         return id;
@@ -54,20 +54,20 @@ public class Ticket {
         this.login = login;
     }
 
-    public String getDate() {
-        return date;
+    public String getTravelDate() {
+        return travelDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setTravelDate(String travelDate) {
+        this.travelDate = travelDate;
     }
 
-    public String getCommentary() {
-        return commentary;
+    public String getCommentaryTr() {
+        return commentaryTr;
     }
 
-    public void setCommentary(String commentary) {
-        this.commentary = commentary;
+    public void setCommentaryTr(String commentaryTr) {
+        this.commentaryTr = commentaryTr;
     }
 
     public String getFrom() {
@@ -86,11 +86,11 @@ public class Ticket {
         this.to = to;
     }
 
-    public String getClientName() {
+    public Client getClientName() {
         return clientName;
     }
 
-    public void setClientName(String clientName) {
+    public void setClientName(Client clientName) {
         this.clientName = clientName;
     }
 }

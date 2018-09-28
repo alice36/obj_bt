@@ -1,15 +1,15 @@
 package pl.javastart.springdata.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import pl.javastart.springdata.model.Voucher;
 import pl.javastart.springdata.repository.TicketRepository;
-import pl.javastart.springdata.repository.VoucherRepository;
 import pl.javastart.springdata.model.Ticket;
 
 import java.util.List;
 
+@Controller
 public class TicketController {
     TicketRepository ticketRepository;
 
@@ -18,20 +18,11 @@ public class TicketController {
 
     }
 
-    @GetMapping("/tAdding")
-    public String home(Model model) {
-        Ticket ticket = new Ticket();
-        String username = System.getProperty("user.name");
-        ticket.setLogin(username);
-        model.addAttribute("newTicket", ticket);
-        return "tAdd";
-    }
-
     @GetMapping("/tshow")
     public String home2(Model model) {
         List<Ticket> tickets = ticketRepository.findAll();
         model.addAttribute("tickets", tickets);
-        return "ticketshow";
+        return "tshow";
     }
 
     @PostMapping("/generated")
@@ -40,6 +31,6 @@ public class TicketController {
 
         List<Ticket> tickets = ticketRepository.findAll();
         model.addAttribute("tickets", tickets);
-        return "redirect:/ticketshow";
+        return "redirect:/tshow";
     }
 }
