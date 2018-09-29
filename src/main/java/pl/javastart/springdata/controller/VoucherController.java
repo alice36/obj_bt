@@ -102,6 +102,7 @@ public class VoucherController {
                     voucher.setNumer(line);
                     voucher.setIsAvailable(1);
                     voucher.setAddedDate(LocalDate.now());
+                    voucher.setVersion(1);
                     voucherRepository.save(voucher);
                 }
             }

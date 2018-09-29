@@ -15,12 +15,10 @@
         <col width="80">
         <col width="80">
         <col width="80">
-        <col width="80">
         <col width="130">
         <col width="130">
         <thead>
         <tr>
-            <th>Id</th>
             <th>Ticket</th>
             <th>Login</th>
             <th>Person</th>
@@ -34,7 +32,6 @@
         </thead>
         <tbody>
         <tr th:each="ticket: ${tickets}">
-            <td th:text="${ticket.id}"></td>
             <td th:text="${ticket.voucher.numer}"></td>
             <td th:text="${ticket.login}"></td>
             <td th:text="${ticket.person}"></td>

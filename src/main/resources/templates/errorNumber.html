@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+          integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+<th:block th:include="header.html :: header"/>
+<div style="width: 600px; margin: auto; border: 1px #ccc solid; padding: 30px">
+    <h5>Action can not be taken because of exceded limit (5 vouchers per month)!</h5>
+    <a href="/"><-- Return on main page</a>
+</div>
+</body>
+</html>

@@ -18,6 +18,9 @@ public class Voucher {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate addedDate;
 
+    @Version
+    private long version;
+
     public Long getId() {
         return id;
     }
@@ -48,5 +51,13 @@ public class Voucher {
 
     public void setAddedDate(LocalDate addedDate) {
         this.addedDate = addedDate;
+    }
+
+    public long getVersion() {
+        return version;
+    }
+
+    public void setVersion(long version) {
+        this.version = version;
     }
 }

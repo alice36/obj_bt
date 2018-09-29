@@ -28,7 +28,8 @@ public class TicketController {
 
     @GetMapping("/tshow")
     public String home2(Model model) {
-        List<Ticket> tickets = ticketRepository.findAll();
+        String username = System.getProperty("user.name");
+        List<Ticket> tickets = ticketRepository.findTicketUsingLogin(username);
         model.addAttribute("tickets", tickets);
         return "tshow";
     }
@@ -37,19 +38,25 @@ public class TicketController {
     public String ticketiing(Ticket ticket, Model model) {
 //        Optional<Voucher> freeVoucher = voucherRepository.findFirstFreeVoucher();
         Voucher freeVoucher = voucherRepository.findFirstFreeVoucher();
-
+        long counter=0;
         if (freeVoucher!=null) {
             if (ticket.getClientName()==null || ticket.getFromPlace().equals("") || ticket.getToPlace().equals("") || ticket.getPerson().equals("")) {
                 return "errorHt";
             } else {
-                ticket.setVoucher(freeVoucher);
-                freeVoucher.setIsAvailable(0);
-                ticket.setBookingDate(LocalDate.now());
-                ticketRepository.save(ticket);
+                counter = ticketRepository.countTicketUsingLoginAndDate(System.getProperty("user.name"));
+                if (counter<5) {
+                    ticket.setVoucher(freeVoucher);
+                    freeVoucher.setIsAvailable(0);
+                    ticket.setBookingDate(LocalDate.now());
+                    ticketRepository.save(ticket);
 
-                Ticket tickets = ticketRepository.findTicketUsingNumer(ticket.getVoucher().getNumer());
-                model.addAttribute("tickets", tickets);
-                return "tshow";
+                    Ticket tickets = ticketRepository.findTicketUsingNumer(ticket.getVoucher().getNumer());
+                    model.addAttribute("tickets", tickets);
+                    return "tshow";
+                }
+                else {
+                    return "errorNumber";
+                }
             }
         } else {
             return "lack";

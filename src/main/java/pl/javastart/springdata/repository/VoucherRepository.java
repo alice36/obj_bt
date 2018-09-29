@@ -16,4 +16,5 @@ public interface VoucherRepository extends JpaRepository<Voucher, Long> {
     @Query("SELECT v from Voucher v " +
             "where v.numer = :letter")
     Voucher findVoucherUsingNumber(@Param("letter") String numer);
+
 }
