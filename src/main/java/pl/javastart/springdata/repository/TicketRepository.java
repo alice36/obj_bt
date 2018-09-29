@@ -11,4 +11,8 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     @Query("SELECT t from Ticket t " +
             "where t.voucher.id = :letter")
     Ticket findTicketUsingId(@Param("letter") Long id);
+
+    @Query("SELECT t from Ticket t " +
+            "where t.voucher.numer = :letter")
+    Ticket findTicketUsingNumer(@Param("letter") String numer);
 }

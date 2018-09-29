@@ -21,6 +21,9 @@ public class Ticket {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate travelDate;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate bookingDate;
+
     private String fromPlace;
     private String toPlace;
 
@@ -98,5 +101,18 @@ public class Ticket {
 
     public void setClientName(Client clientName) {
         this.clientName = clientName;
+    }
+
+    public LocalDate getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(LocalDate bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    @Override
+    public String toString() {
+        return id + ";" + voucher.getId() + ";" + voucher.getNumer()  + ";" + login  + ";" + person  + ";" + travelDate  + ";" + fromPlace  + ";" + toPlace  + ";" + clientName  + ";" + bookingDate + ";" + commentaryTr;
     }
 }

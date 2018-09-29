@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>File</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+          integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+<th:block th:include="header.html :: header"/>
+    <div style="width: 700px; margin: auto; border: 1px #ccc solid; padding: 20px">
+
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="exampleFormControlFile1">File input</label>
+                <br/>
+                <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+                <br/>
+                <input type="submit" value="Press" class="btn btn-primary"> to upload the file!
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

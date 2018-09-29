@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Voucher</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
           integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 </head>
@@ -15,6 +15,7 @@
             <th>Id</th>
             <th>Number</th>
             <th>Free</th>
+            <th>Adding Date</th>
         </tr>
         </thead>
         <tbody>
@@ -22,6 +23,7 @@
             <td th:text="${voucher.id}"></td>
             <td th:text="${voucher.numer}"></td>
             <td th:text="${voucher.isAvailable}"></td>
+            <td th:text="${voucher.addedDate}"></td>
         </tr>
         </tbody>
     </table>

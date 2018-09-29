@@ -9,6 +9,10 @@ import pl.javastart.springdata.repository.TicketRepository;
 import pl.javastart.springdata.model.Ticket;
 import pl.javastart.springdata.repository.VoucherRepository;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -40,14 +44,34 @@ public class TicketController {
             } else {
                 ticket.setVoucher(freeVoucher);
                 freeVoucher.setIsAvailable(0);
+                ticket.setBookingDate(LocalDate.now());
                 ticketRepository.save(ticket);
 
-                Ticket tickets = ticketRepository.findTicketUsingId(ticket.getVoucher().getId());
+                Ticket tickets = ticketRepository.findTicketUsingNumer(ticket.getVoucher().getNumer());
                 model.addAttribute("tickets", tickets);
-                return "redirect:/tshow";
+                return "tshow";
             }
         } else {
             return "lack";
         }
+    }
+
+    @GetMapping("/csv")
+    public String csv() throws IOException {
+        List<Ticket> tickets = ticketRepository.findAll();
+        String home = System.getProperty("user.home");
+
+        FileWriter fileWriter = new FileWriter(home + "/Downloads/" + "fileBT.csv");
+        BufferedWriter bfw = new BufferedWriter(fileWriter);
+        bfw.write("id;voucher_id;voucher_number;login;person;travel_date;from;to;client;book_date;commentary");
+        bfw.newLine();
+
+        for (Ticket ticket : tickets) {
+            bfw.write(ticket.toString());
+            bfw.newLine();
+        }
+
+        bfw.close();
+        return "redirect:/";
     }
 }

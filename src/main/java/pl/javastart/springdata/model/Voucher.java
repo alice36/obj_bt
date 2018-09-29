@@ -1,6 +1,9 @@
 package pl.javastart.springdata.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Voucher {
@@ -12,9 +15,8 @@ public class Voucher {
     private String numer;
     private Integer isAvailable;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @PrimaryKeyJoinColumn
-//    private Ticket ticket;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate addedDate;
 
     public Long getId() {
         return id;
@@ -38,5 +40,13 @@ public class Voucher {
 
     public void setIsAvailable(Integer isAvailable) {
         this.isAvailable = isAvailable;
+    }
+
+    public LocalDate getAddedDate() {
+        return addedDate;
+    }
+
+    public void setAddedDate(LocalDate addedDate) {
+        this.addedDate = addedDate;
     }
 }

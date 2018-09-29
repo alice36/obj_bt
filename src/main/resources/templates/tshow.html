@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Ticket</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
           integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 </head>
 <body>
 <th:block th:include="header.html :: header"/>
-<div style="width: 900px; margin: auto; border: 1px #ccc solid; padding: 20px">
+<div style="width: 1100px; margin: auto; border: 1px #ccc solid; padding: 20px">
     <table class="table">
         <col width="80">
         <col width="80">
@@ -26,7 +26,9 @@
             <th>Person</th>
             <th>From</th>
             <th>To</th>
-            <th width="100">Date</th>
+            <th>Client</th>
+            <th width="100">Travel Date</th>
+            <th width="100">Book Date</th>
             <th>Commentary</th>
         </tr>
         </thead>
@@ -38,7 +40,9 @@
             <td th:text="${ticket.person}"></td>
             <td th:text="${ticket.fromPlace}"></td>
             <td th:text="${ticket.toPlace}"></td>
+            <td th:text="${ticket.clientName}"></td>
             <td th:text="${ticket.travelDate}"></td>
+            <td th:text="${ticket.bookingDate}"></td>
             <td th:text="${ticket.commentaryTr}"></td>
         </tr>
         </tbody>
