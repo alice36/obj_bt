@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.javastart.springdata.model.Login;
+import pl.javastart.springdata.repository.LoginRepository;
 import pl.javastart.springdata.repository.VoucherRepository;
 import pl.javastart.springdata.model.Client;
 import pl.javastart.springdata.model.Ticket;
@@ -23,9 +25,11 @@ import java.util.Scanner;
 @Controller
 public class VoucherController {
     VoucherRepository voucherRepository;
+    LoginRepository loginRepository;
 
-    public VoucherController(VoucherRepository voucherRepository) {
+    public VoucherController(VoucherRepository voucherRepository, LoginRepository loginRepository) {
         this.voucherRepository = voucherRepository;
+        this.loginRepository = loginRepository;
     }
 
     @GetMapping("/")
@@ -85,36 +89,44 @@ public class VoucherController {
 
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file1,
-                              RedirectAttributes redirectAttributes){
-        BufferedReader reader = null;
-        Voucher voucher = null;
-        Voucher found = null;
-        try {
-//          File file = new File("C:/Users/Alice/Desktop/vouchers.csv");
-            InputStream is = file1.getInputStream();
-            reader = new BufferedReader(new InputStreamReader(is));
-//            reader = new BufferedReader(new FileReader(file1.getOriginalFilename()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                found = voucherRepository.findVoucherUsingNumber(line);
-                if (found == null) {
-                    voucher = new Voucher();
-                    voucher.setNumer(line);
-                    voucher.setIsAvailable(1);
-                    voucher.setAddedDate(LocalDate.now());
-                    voucher.setVersion(1);
-                    voucherRepository.save(voucher);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
+                              RedirectAttributes redirectAttributes) {
+
+        String name = System.getProperty("user.name");
+        Login actualLogin = loginRepository.findLoginUsingName(name);
+
+        if (actualLogin != null && actualLogin.isHasPermissionLoad()) {
+            BufferedReader reader = null;
+            Voucher voucher = null;
+            Voucher found = null;
             try {
-                reader.close();
+//          File file = new File("C:/Users/Alice/Desktop/vouchers.csv");
+                InputStream is = file1.getInputStream();
+                reader = new BufferedReader(new InputStreamReader(is));
+//            reader = new BufferedReader(new FileReader(file1.getOriginalFilename()));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    found = voucherRepository.findVoucherUsingNumber(line);
+                    if (found == null) {
+                        voucher = new Voucher();
+                        voucher.setNumer(line);
+                        voucher.setIsAvailable(1);
+                        voucher.setAddedDate(LocalDate.now());
+                        voucher.setVersion(1);
+                        voucherRepository.save(voucher);
+                    }
+                }
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+            return "redirect:/";
+        } else {
+            return "errorLogin";
         }
-        return "redirect:/";
     }
 }

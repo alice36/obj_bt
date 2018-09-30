@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:margin="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+          integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+<th:block th:include="header.html :: header"/>
+<div style="width: 1100px; margin: auto; border: 1px #ccc solid; padding: 20px">
+    <h2>Your voucher</h2>
+    <h2 th:text="${tick.voucher.numer}"></h2>
+    <br>
+    <table class="table">
+        <col width="80">
+        <col width="80">
+        <col width="80">
+        <col width="80">
+        <col width="80">
+        <col width="130">
+        <col width="130">
+        <thead>
+        <tr>
+            <th>Ticket</th>
+            <th>Login</th>
+            <th>Person</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Client</th>
+            <th width="100">Travel Date</th>
+            <th width="100">Book Date</th>
+            <th>Commentary</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ticket: ${tickets}">
+            <td th:text="${ticket.voucher.numer}"></td>
+            <td th:text="${ticket.login}"></td>
+            <td th:text="${ticket.person}"></td>
+            <td th:text="${ticket.fromPlace}"></td>
+            <td th:text="${ticket.toPlace}"></td>
+            <td th:text="${ticket.clientName}"></td>
+            <td th:text="${ticket.travelDate}"></td>
+            <td th:text="${ticket.bookingDate}"></td>
+            <td th:text="${ticket.commentaryTr}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/" class="btn btn-primary">Go home</a>
+</div>
+</body>
+</html>
