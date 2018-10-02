@@ -41,8 +41,12 @@
         <div class="form-row">
             <div class="col">
                 <label for="clientName">Client Name</label>
-                <select class="form-control" th:field="*{clientName}" >
-                    <option th:each="clientName: ${allClients}" th:text="${clientName}" th:value="${clientName}" id="clientName"></option>
+                <!--<select class="form-control" th:field="*{clientName}" >-->
+                    <!--<option th:each="clientName: ${allClients}" th:text="${clientName}" th:value="${clientName}" id="clientName"></option>-->
+                <!--</select>-->
+                <select id="description" name="descriptio" class="form-control mb-4">
+                    <option disabled="disabled" selected="selected" value="">Choose one</option>
+                    <option th:each="clientName: ${allClients}" th:value="${clientName}" th:text="${clientName}"></option>
                 </select>
             </div>
 

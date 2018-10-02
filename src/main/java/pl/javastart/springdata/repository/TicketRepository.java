@@ -31,4 +31,8 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
             "where t.login = :letter")
     Long countTicketUsingLoginAndDate(@Param("letter") String login);
 
+//    @Query(value="SELECT count(t.login) from Ticket t " +
+//            "where t.login = :letter and t.booking_date = :tmp", nativeQuery = true)
+//    Long countTicketUsingLoginAndDate(@Param("letter") String login, LocalDate tmp);
+
 }
