@@ -23,6 +23,7 @@ public enum Client {
     MCKINSEY,
     MORRISONS,
     NORTAL,
+    OBJECTIVITY,
     OMIKRON,
     PAYU,
     PRIMARK,
