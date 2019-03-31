@@ -1,9 +1,9 @@
 package pl.javastart.springdata.model;
 
 public enum Client {
-    AMS,
-    APLEONA,
-    PAYU,
-    PRIMARK,
-    PWC
+    CLIENT1,
+    CLIENT2,
+    CLIENT3,
+    CLIENT4,
+    CLIENT5
 }
