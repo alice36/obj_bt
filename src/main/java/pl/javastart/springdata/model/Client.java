@@ -5,5 +5,6 @@ public enum Client {
     CLIENT2,
     CLIENT3,
     CLIENT4,
-    CLIENT5
+    CLIENT5,
+    CLIENT6
 }
